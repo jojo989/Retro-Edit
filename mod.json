@@ -11,6 +11,12 @@
 	"version": "v1.0.1",
 	"developer": "TheSillyDoggo",
 	"description": "Allows you to use the object palette from older versions of the game",
+	"resources": {
+        "sprites": [
+            "resources/edit_eTintBGBtn_001.png",
+            "resources/edit_eTintLBtn_001.png"
+        ]
+    },
 	"tags": [
 		"modtober24",
 		"editor"
