@@ -28,11 +28,11 @@ class $modify (GameObject)
                 pRet = GameObject::createWithKey(899);
                 pRet->m_objectID = 104;
                 pRet->m_objectType = GameObjectType::Modifier;
-                pRet->m_unk390 = as<int>(GameObjectType::Modifier);
+                pRet->m_unk390 = static_cast<int>(GameObjectType::Modifier);
 
                 if (CCSprite* newSpr = CCSprite::create("edit_eTintLBtn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
+                    pRet->m_addToNodeContainer = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
@@ -43,11 +43,11 @@ class $modify (GameObject)
                 pRet = GameObject::createWithKey(899);
                 pRet->m_objectID = 221;
                 pRet->m_objectType = GameObjectType::Modifier;
-                pRet->m_unk390 = as<int>(GameObjectType::Modifier);
+                pRet->m_unk390 = static_cast<int>(GameObjectType::Modifier);
 
                 if (CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eTintCol01Btn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
+                    pRet->m_addToNodeContainer = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
@@ -58,11 +58,11 @@ class $modify (GameObject)
                 pRet = GameObject::createWithKey(899);
                 pRet->m_objectID = key;
                 pRet->m_objectType = GameObjectType::Modifier;
-                pRet->m_unk390 = as<int>(GameObjectType::Modifier);
+                pRet->m_unk390 = static_cast<int>(GameObjectType::Modifier);
 
                 if (CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eTintCol01Btn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
+                    pRet->m_addToNodeContainer = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
@@ -78,7 +78,7 @@ class $modify (GameObject)
 
 #define EDITOR_BUTTON(__objid__) \
 if (__objid__ == -1) \
-    btn = as<CCMenuItemSpriteExtra*>(CCNode::create()); \
+    btn = static_cast<CCMenuItemSpriteExtra*>(CCNode::create()); \
 else \
 { \
     btn = ui->getCreateBtn(__objid__, 4); \
@@ -95,7 +95,7 @@ array->addObject(btn);
 
 #define EDITOR_BUTTON2(__objid__, __colour__) \
 if (__objid__ == -1) \
-    btn = as<CCMenuItemSpriteExtra*>(CCNode::create()); \
+    btn = static_cast<CCMenuItemSpriteExtra*>(CCNode::create()); \
 else \
 { \
     btn = ui->getCreateBtn(__objid__, __colour__); \
@@ -1223,7 +1223,7 @@ spr1->setPosition(toggle->m_offButton->getNormalImage()->getContentSize() / 2); 
 spr1->setPositionY(7.5f); \
 spr1->setID("spr1"_spr); \
 limitNodeSize(spr1, ccp(25, 14), 0.55f, 0); \
-as<CCSprite*>(toggle->m_offButton->getNormalImage())->setOpacity(150); \
+static_cast<CCSprite*>(toggle->m_offButton->getNormalImage())->setOpacity(150); \
 toggle->m_offButton->getNormalImage()->addChild(spr1); \
 spr2 = spr; \
 spr2->setPosition(toggle->m_offButton->getNormalImage()->getContentSize() / 2); \
@@ -1236,7 +1236,7 @@ tabs.push_back(toggle);
 std::vector<CCMenuItemToggler*> VersionUtils::getTabs(std::string version)
 {
     if (version == "1.0" || version == "1.1" || version == "1.2" || version == "1.3" || version == "1.4" || version == "1.5" || version == "1.6")
-        return { as<CCMenuItemToggler*>(CCNode::create()) };
+        return { static_cast<CCMenuItemToggler*>(CCNode::create()) };
 
     std::vector<CCMenuItemToggler*> tabs;
     CCSprite* spr1;
@@ -1260,16 +1260,16 @@ std::vector<CCMenuItemToggler*> VersionUtils::getTabs(std::string version)
     TAB_SPRITE(GameObject::createWithKey(1));
     TAB_SPRITE(GameObject::createWithKey(40));
 
-    as<GameObject*>(spr1)->addChildAtPosition(sprSlab1, Anchor::Center);
-    as<GameObject*>(spr2)->addChildAtPosition(sprSlab2, Anchor::Center);
+    static_cast<GameObject*>(spr1)->addChildAtPosition(sprSlab1, Anchor::Center);
+    static_cast<GameObject*>(spr2)->addChildAtPosition(sprSlab2, Anchor::Center);
 
     if (version == "1.8" || version == "1.9")
     {
         TAB_SPRITE(GameObject::createWithKey(467));
         TAB_SPRITE(GameObject::createWithKey(289));
 
-        as<GameObject*>(spr1)->addChildAtPosition(slope1, Anchor::Center);
-        as<GameObject*>(spr2)->addChildAtPosition(slope2, Anchor::Center);
+        static_cast<GameObject*>(spr1)->addChildAtPosition(slope1, Anchor::Center);
+        static_cast<GameObject*>(spr2)->addChildAtPosition(slope2, Anchor::Center);
     }
 
     TAB_SPRITE(GameObject::createWithKey(8));
